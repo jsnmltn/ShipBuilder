@@ -1,70 +1,15 @@
 //Written by Jason Milton
 
+import java.util.Comparator;
 import java.util.Scanner;
 
-public class ShipNavigator {
-
-	private Ship[] fleet;
-
-	public ShipNavigator(Ship[] fleet) {
-		this.fleet = fleet;
-	}
+public class ShipNavigator implements Comparator<Ship>{
 
 	public static final int MAX_SHIPS = 100;
 
-	public ShipNavigator() {
-		fleet = new Ship[MAX_SHIPS];
-	}
-
-	public Ship[] getFleet() {
-		return this.fleet;
-	}
-
-	public void addShip(Ship aP) {
-		for (int i = 0; i < fleet.length; i++) {
-			if (fleet[i] == null) {
-				fleet[i] = aP;
-				return;
-			}
-		}
-
-		System.out.println("The fleet of ships is full!");
-	}
-
-	// Trying to create the remove method
-	public void removeShip(Ship aP) {
-		for (int i = 0; i < fleet.length;) {
-			if (fleet[i] != null && fleet[i].equals(aP))
-				;
-			{
-				System.out.println("Removing Ship :" + aP.getName());
-				aP = null;
-			}
-			if (fleet[i] == null) {
-				System.out.println("Ship not found in fleet");
-			}
-			return;
-		}
-	}
-
-	public void renameShip(Ship aP) {
-		for (int i = 0; i < fleet.length; i++) {
-			if (fleet[i] != null && fleet[i].equals(aP)) {
-				System.out.println("Please enter the new name for ship ");
-				String xName = key.next();
-				aP.setName(xName);
-				fleet[i] = aP;
-				return;
-			}
-		}
-		System.out.println("That ship was not found");
-
-	}
-
-	// creating a static to be used throughout
 	static Scanner key;
 
-	public static void main(String[] args) {
+	public static void main(String[] args, String string) {
 
 		key = new Scanner(System.in);
 
@@ -97,14 +42,16 @@ public class ShipNavigator {
 
 				default:
 					System.out.println("Invalid input");
+					break;
 			}
+			System.out.println("*");
 			System.out.println("The Current Fleet");
 			System.out.println();
 			printFleet(sNV);
 		}
 		System.out.println("Goodbye!");
 	}
-
+	
 	public static Ship renameShipDialoge() {
 		Ship retS;
 		int pick = 0;
@@ -209,6 +156,67 @@ public class ShipNavigator {
 
 			continue;
 		}
+	}
+
+	private Ship[] fleet;
+
+	// Trying to create the remove method
+	public ShipNavigator(Ship[] fleet) {
+		this.fleet = fleet;
+	}
+
+	public ShipNavigator() {
+		fleet = new Ship[MAX_SHIPS];
+	}
+
+	public Ship[] getFleet() {
+		return this.fleet;
+	}
+
+	public void addShip(Ship aP) {
+		for (int i = 0; i < fleet.length; i++) {
+			if (fleet[i] == null) {
+				fleet[i] = aP;
+				return;
+			}
+		}
+
+		System.out.println("The fleet of ships is full!");
+	}
+
+	public void removeShip(Ship aP) {
+		for (int i = 0; i < fleet.length;) {
+			if (fleet[i] != null && fleet[i].equals(aP))
+				;
+			{
+				System.out.println("Removing Ship :" + aP.getName());
+				aP = null;
+			}
+			if (fleet[i] == null) {
+				System.out.println("Ship not found in fleet");
+			}
+			return;
+		}
+	}
+
+	public void renameShip(Ship aP) {
+		for (int i = 0; i < fleet.length; i++) {
+			if (fleet[i] != null && fleet[i].equals(aP)) {
+				System.out.println("Please enter the new name for ship ");
+				String xName = key.next();
+				aP.setName(xName);
+				fleet[i] = aP;
+				return;
+			}
+		}
+		System.out.println("That ship was not found");
+
+	}
+
+	@Override
+	public int compare(Ship o1, Ship o2) {
+	
+		return 0;
 	}
 
 }
