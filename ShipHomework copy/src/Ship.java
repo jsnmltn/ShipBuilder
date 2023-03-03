@@ -1,3 +1,5 @@
+
+
 //Written by Jason Milton
 public class Ship {
 
@@ -68,11 +70,15 @@ public class Ship {
 		}
 
 	}
+	public String toString(){
+		return "name : " + name + "\t" + "launch date : " + launchDate;
+	}
 
 	public void writeOutput() {
 
 		System.out.println("Ship Name: " + this.name
 				+ "\nLaunch Date: " + this.launchDate);
 	}
+	
 
 }
