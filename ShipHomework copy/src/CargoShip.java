@@ -47,7 +47,8 @@ public class CargoShip extends Ship {
 	}
 	public void writeOutput()
 	{
-		System.out.println("Ship Name: "+super.getName()
+		System.out.println("Ship Name: " + super.getName()
+		+ "\nLaunchDate :" + super.getLaunchDate()
 		+"\nDeadweight Tonnage: "+this.dWT
 		+"\nMaximum Speed: "+this.speed);
 	}
