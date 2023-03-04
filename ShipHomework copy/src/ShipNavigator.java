@@ -9,7 +9,7 @@ public class ShipNavigator implements Comparator<Ship>{
 
 	static Scanner key;
 
-	public static void main(String[] args, String string) {
+	public static void main(String[] args) {
 
 		key = new Scanner(System.in);
 
@@ -44,7 +44,7 @@ public class ShipNavigator implements Comparator<Ship>{
 					System.out.println("Invalid input");
 					break;
 			}
-			System.out.println("*");
+			System.out.println("**********************************");
 			System.out.println("The Current Fleet");
 			System.out.println();
 			printFleet(sNV);
@@ -184,33 +184,32 @@ public class ShipNavigator implements Comparator<Ship>{
 		System.out.println("The fleet of ships is full!");
 	}
 
-	public void removeShip(Ship aP) {
+	public Ship removeShip(Ship aP) {
 		for (int i = 0; i < fleet.length;) {
 			if (fleet[i] != null && fleet[i].equals(aP))
-				;
 			{
 				System.out.println("Removing Ship :" + aP.getName());
 				aP = null;
 			}
-			if (fleet[i] == null) {
+			if(fleet[i] == null) {
 				System.out.println("Ship not found in fleet");
 			}
-			return;
 		}
+		return aP;
 	}
 
-	public void renameShip(Ship aP) {
+	public Ship renameShip(Ship aP) {
 		for (int i = 0; i < fleet.length; i++) {
 			if (fleet[i] != null && fleet[i].equals(aP)) {
 				System.out.println("Please enter the new name for ship ");
 				String xName = key.next();
 				aP.setName(xName);
 				fleet[i] = aP;
-				return;
+			
 			}
 		}
 		System.out.println("That ship was not found");
-
+		return aP;
 	}
 
 	@Override
